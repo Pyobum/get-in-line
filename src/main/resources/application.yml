@@ -1,0 +1,10 @@
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+debug: 'true'
+server:
+  error:
+    whitelabel:
+      enabled: 'false'
