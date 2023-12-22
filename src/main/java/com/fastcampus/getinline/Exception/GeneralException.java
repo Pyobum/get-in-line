@@ -1,7 +1,9 @@
 package com.fastcampus.getinline.Exception;
 
 import com.fastcampus.getinline.Constant.ErrorCode;
+import lombok.Getter;
 
+@Getter
 public class GeneralException extends RuntimeException {
 
     private final ErrorCode errorCode;
