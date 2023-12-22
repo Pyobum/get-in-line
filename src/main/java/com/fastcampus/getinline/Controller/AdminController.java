@@ -1,5 +1,7 @@
 package com.fastcampus.getinline.Controller;
 
+import com.fastcampus.getinline.Constant.EventStatus;
+import com.fastcampus.getinline.Constant.PlaceType;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
