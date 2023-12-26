@@ -9,13 +9,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class PlaceController {
 
-    @GetMapping("/")
+    @GetMapping
     public String places() {
-        return "places/index";
+        return "place/index";
     }
 
-    @GetMapping()
-    public String placeDetail(@PathVariable Integer placeId) {
+    @GetMapping("/{placeId}")
+    public String placeDetail(@PathVariable Long placeId) {
         return "place/detail";
     }
+
 }
