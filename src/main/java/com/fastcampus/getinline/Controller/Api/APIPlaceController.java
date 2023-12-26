@@ -1,4 +1,4 @@
-package com.fastcampus.getinline.Controller.api;
+package com.fastcampus.getinline.Controller.Api;
 
 import org.springframework.web.bind.annotation.*;
 
