@@ -41,5 +41,4 @@ public class BaseErrorController implements ErrorController {
                 .status(status)
                 .body(APIErrorResponse.of(false, errorCode));
     }
-
 }
