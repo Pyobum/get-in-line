@@ -29,15 +29,15 @@ public class APIPlaceControllerTest {
         this.mapper = mapper;
     }
 
-    @DisplayName("[API][GET] 장소 리스트 조회")
+    @DisplayName("[API][GET] 장소 리스트 조회 - 장소 리스트 데이터를 담은 표준 API 출력")
     @Test
-    void givenNothing_whenRequestingPlaces_thenReturnsListOfPlacesInStandardResponse() throws Exception {
+    void givenNothing_whenRequestingPlaces_thenReturnsPlacesInStandardResponse() throws Exception {
         // Given
 
         // When & Then
         mvc.perform(get("/api/places"))
                 .andExpect(status().isOk())
-                .andExpect(content().contentTypeCompatibleWith(MediaType.APPLICATION_JSON))
+                .andExpect(content().contentType(MediaType.APPLICATION_JSON))
                 .andExpect(jsonPath("$.data").isArray())
                 .andExpect(jsonPath("$.data[0].placeType").value(PlaceType.COMMON.name()))
                 .andExpect(jsonPath("$.data[0].placeName").value("랄라배드민턴장"))
@@ -70,7 +70,7 @@ public class APIPlaceControllerTest {
                                 .content(mapper.writeValueAsString(placeRequest))
                 )
                 .andExpect(status().isCreated())
-                .andExpect(content().contentTypeCompatibleWith(MediaType.APPLICATION_JSON))
+                .andExpect(content().contentType(MediaType.APPLICATION_JSON))
                 .andExpect(jsonPath("$.success").value(true))
                 .andExpect(jsonPath("$.errorCode").value(ErrorCode.OK.getCode()))
                 .andExpect(jsonPath("$.message").value(ErrorCode.OK.getMessage()));
@@ -85,7 +85,7 @@ public class APIPlaceControllerTest {
         // When & Then
         mvc.perform(get("/api/places/" + placeId))
                 .andExpect(status().isOk())
-                .andExpect(content().contentTypeCompatibleWith(MediaType.APPLICATION_JSON))
+                .andExpect(content().contentType(MediaType.APPLICATION_JSON))
                 .andExpect(jsonPath("$.data").isMap())
                 .andExpect(jsonPath("$.data.placeType").value(PlaceType.COMMON.name()))
                 .andExpect(jsonPath("$.data.placeName").value("랄라배드민턴장"))
@@ -107,7 +107,7 @@ public class APIPlaceControllerTest {
         // When & Then
         mvc.perform(get("/api/places/" + placeId))
                 .andExpect(status().isOk())
-                .andExpect(content().contentTypeCompatibleWith(MediaType.APPLICATION_JSON))
+                .andExpect(content().contentType(MediaType.APPLICATION_JSON))
                 .andExpect(jsonPath("$.data").isEmpty())
                 .andExpect(jsonPath("$.success").value(true))
                 .andExpect(jsonPath("$.errorCode").value(ErrorCode.OK.getCode()))
@@ -135,7 +135,7 @@ public class APIPlaceControllerTest {
                                 .content(mapper.writeValueAsString(placeRequest))
                 )
                 .andExpect(status().isOk())
-                .andExpect(content().contentTypeCompatibleWith(MediaType.APPLICATION_JSON))
+                .andExpect(content().contentType(MediaType.APPLICATION_JSON))
                 .andExpect(jsonPath("$.success").value(true))
                 .andExpect(jsonPath("$.errorCode").value(ErrorCode.OK.getCode()))
                 .andExpect(jsonPath("$.message").value(ErrorCode.OK.getMessage()));
@@ -150,7 +150,7 @@ public class APIPlaceControllerTest {
         // When & Then
         mvc.perform(delete("/api/places/" + placeId))
                 .andExpect(status().isOk())
-                .andExpect(content().contentTypeCompatibleWith(MediaType.APPLICATION_JSON))
+                .andExpect(content().contentType(MediaType.APPLICATION_JSON))
                 .andExpect(jsonPath("$.success").value(true))
                 .andExpect(jsonPath("$.errorCode").value(ErrorCode.OK.getCode()))
                 .andExpect(jsonPath("$.message").value(ErrorCode.OK.getMessage()));
